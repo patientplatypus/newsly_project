@@ -42,8 +42,8 @@
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   * Install Node.js dependencies with `npm install`
   * Start Phoenix endpoint with `mix phoenix.server`
-
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+  * Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+  
 2. Generators!
 - To get datatables in postgres (clear the database and remigrate all data models): `sudo mix do ecto.drop, ecto.create, ecto.migrate`
 - To generate models (example): `mix phx.gen.schema Articles article user:string articleurl:string articletitle:string upvotes:integer downvotes:integer flaggedcount:integer`

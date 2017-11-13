@@ -1,6 +1,22 @@
 # Newsly
 
+# First things first...
+
+## This project won't compile - why not?
+This project will compile and run on my machine, but not on other people's computers? Why is that?
+The reason is that my .gitignore files are specifically ignoring S3 services, and passwords for my environment variables (as they should).
+So....
+
+## TO RUN LOCALLY
+1. Navigate to root and follow the directions [here](https://github.com/dreamingechoes/docker-elixir-phoenix) to get the docker file up and running for the backend.
+2. cd into the front end folder and
+  * `npm install`
+  * `npm run dev`
+3. Everything *should* run, *except* the profile page as I do not include my AWS credentials.
+4. This is a new and active production, so for any questions, please feel free to email pweyand@gmail.com.
+
 # What is this project?
+
 ## Overview
   This project is a live updating Reddit clone. What this means is that it allows users to submit articles and comments to those articles, rate each others articles and comments, and have those comments broadcasted to all other users live using web sockets. In practice this means that the user sees their webpage update, without refreshing, live as they are on the page. This app also allows users to upload a picture to Amazon S3 where it will be stored for later retrieval, as well as having a dashboard that will show their "Karma" or total points that other users have given them, in a dashboard. This Karma total also live updates. Essentially this is a full REST api implementation in websockets. I think it is pretty cool!
 
@@ -30,12 +46,12 @@
 * Vue App is on the left, and Phoenix is on the right, separated by the HTTP/socket pipes connecting them.
 * Vue diagram is program down by components on the top and Vuex (state management) on the bottom
 * Phoenix is organized by MVC pattern and a link to AWS.
-3. Remember this diagram is here as an aide to understanding. If it is not useful, do not use it!
+3. Remember this diagram is here as an aid to understanding. If it is not useful, do not use it!
 
 
 # Useful Bash Commands
 ## For the Phoenix Backend
-1. To start your Phoenix app:
+1. To *typically* start a phoenix backend you would perform the following commands. (We don't do that in this case as we use a Dockerfile)
 
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
@@ -64,6 +80,11 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 - Documentation for the Ecto model (the 'go-to' library that handles database storage in Phoenix): [Ecto Docs](https://hexdocs.pm/ecto/Ecto.html)
 
 
+# Deployment
+## Docker Commands
+- [Docker Commands](https://github.com/dreamingechoes/docker-elixir-phoenix). This implementation is a little more verbose than docker packages that come with elixir pre-installed, but it has a few benefits. It allows you to have more granularity and less magic in the dockerfile as the image is a clean Ubuntu build (much less magical - allowing for easier hacking) and the repo has all the commands described very nicely.
+
+
 # Other Useful Links on How to Do Things
 - [Deploying Elixir to AWS Elastic Beanstalk with Docker](https://robots.thoughtbot.com/deploying-elixir-to-aws-elastic-beanstalk-with-docker). Generally speaking Docker documentation is *not* first class and the tooling has a very non-orthogonal topology (many ways to do many things), even though the tool is very useful and cool. For more help, it is advisable to ask on **IRC @ freenode#Docker**
 - It is also possible to deploy using a service called [Nanobox](nanobox.io), which I have done in the past for a previous application [NotaHotdog](pennydrop.nanobox.io). You can learn more here:
@@ -78,3 +99,4 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 3. Some refactoring is definitely in order. Major planned revisions include:
 * Defmodules in Phoenix Application need to be renamed to be as intuitive as possible
 * Track scope of all sockets and see if some can be combined and others eliminated.
+4. AWS Docker deployment - this may be a bit of a sticky wicket, so could take a little time.

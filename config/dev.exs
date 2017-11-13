@@ -49,8 +49,10 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :newsly, Newsly.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "patientplatypus",
-  password: "Fvnjty0b",
+  # username: "patientplatypus",
+  # password: "Fvnjty0b",
+  username: "postgres",
+  password: "",
   database: "newsly_dev",
-  hostname: "localhost",
+  hostname: "db",
   pool_size: 10

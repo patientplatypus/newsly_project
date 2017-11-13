@@ -2,8 +2,7 @@
 
 # What is this project?
 ## Overview
-  -
-## Features
+  This project is a live updating Reddit clone. What this means is that it allows users to submit articles and comments to those articles, rate each others articles and comments, and have those comments broadcasted to all other users live using web sockets. In practice this means that the user sees their webpage update, without refreshing, live as they are on the page. This app also allows users to upload a picture to Amazon S3 where it will be stored for later retrieval, as well as having a dashboard that will show their "Karma" or total points that other users have given them, in a dashboard. This Karma total also live updates. Essentially this is a full REST api implementation in websockets. I think it is pretty cool!
 
 # Programs I Use
 ## Why Vue
@@ -42,8 +41,8 @@
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   * Install Node.js dependencies with `npm install`
   * Start Phoenix endpoint with `mix phoenix.server`
-  * Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-  
+
+Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 2. Generators!
 - To get datatables in postgres (clear the database and remigrate all data models): `sudo mix do ecto.drop, ecto.create, ecto.migrate`
 - To generate models (example): `mix phx.gen.schema Articles article user:string articleurl:string articletitle:string upvotes:integer downvotes:integer flaggedcount:integer`

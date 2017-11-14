@@ -60,6 +60,6 @@ RUN mix local.hex --force && \
 EXPOSE 4000
 
 WORKDIR /newsly_project
-COPY . .
-RUN ["chmod", "+x", "/newsly_project/startproj.sh"]
-CMD ["/newsly_project/startproj.sh"]
+# COPY . .
+# RUN ["chmod", "+x", "/newsly_project/startproj.sh"]
+# CMD ["/newsly_project/startproj.sh"]

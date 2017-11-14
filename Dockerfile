@@ -57,4 +57,6 @@ RUN mix local.hex --force && \
   mix local.rebar --force && \
   mix hex.info
 
+EXPOSE 4000
+
 WORKDIR /newsly_project

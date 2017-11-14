@@ -2,15 +2,15 @@
   "AWSEBDockerrunVersion": 1,
   "volumes": [
     {
-      "name": "elixir-app",
+      "name": "newsly-app",
       "host": {
-        "sourcePath": "/app"
+        "sourcePath": "/newsly_project"
       }
     }
   ],
   "containerDefinitions": [
     {
-      "name": "elixir-app",
+      "name": "newsly-app",
       "essential": true,
       "portMappings": [
         {

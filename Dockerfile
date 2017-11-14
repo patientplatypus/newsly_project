@@ -60,5 +60,6 @@ RUN mix local.hex --force && \
 EXPOSE 4000
 
 WORKDIR /newsly_project
+COPY . .
 
 CMD ["./startproj.sh"]

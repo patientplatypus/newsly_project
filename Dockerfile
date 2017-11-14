@@ -61,4 +61,4 @@ RUN mix local.hex --force && \
 
 WORKDIR /newsly_project
 
-CMD [""]
+CMD ["./startproj.sh"]

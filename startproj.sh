@@ -1,5 +1,4 @@
 #!/bin/bash
-
 docker-compose build web
 docker-compose run web mix deps.get
 docker-compose run web mix ecto.create

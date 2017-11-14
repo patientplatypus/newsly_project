@@ -60,3 +60,5 @@ RUN mix local.hex --force && \
 #EXPOSE 4000
 
 WORKDIR /newsly_project
+
+CMD [""]

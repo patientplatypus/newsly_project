@@ -8,7 +8,5 @@ services:
     command: mix phx.server
     volumes:
       - .:/newsly_project
-    ports:
-      - "4000:4000"
     depends_on:
       - db

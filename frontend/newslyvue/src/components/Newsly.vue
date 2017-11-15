@@ -84,8 +84,8 @@
 import { Socket } from 'phoenix';
 import axios from 'axios';
 import { mapGetters, mapActions } from 'vuex'
-import Comments from './comments.vue'
-import InfoHandler from './handlers/infohandler.vue'
+import Comments from './Comments.vue'
+import InfoHandler from './handlers/InfoHandler.vue'
 import ImageHandler from './handlers/ImageHandler.vue'
 import EventBus from '../bus/EventBus';
 export default {

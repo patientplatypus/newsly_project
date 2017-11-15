@@ -51,8 +51,9 @@ config :newsly, Newsly.Repo,
   adapter: Ecto.Adapters.Postgres,
   # username: "patientplatypus",
   # password: "Fvnjty0b",
-  username: "postgres",
-  password: "",
-  database: "newsly_dev",
-  hostname: "db",
+  username: "patientplatypus",
+  password: "Fvnjty0b",
+  database: "newslydb",
+  hostname: "platypusnest.c9usvlx4atue.us-west-2.rds.amazonaws.com",
+  # sometimes hostname is db (like in the docker-compose method - play with this one)
   pool_size: 10

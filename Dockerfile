@@ -1,65 +1,62 @@
-# Versions
-#
-# Erlang: 1:20.0
-# Elixir: 1.5.0
-# Phoenix: 1.3.0
+# Set the Docker image you want to base your image off.
+# I chose this one because it has Elixir preinstalled.
+FROM trenpixster/elixir:1.4.0
 
-FROM ubuntu:14.04
+# Setup Node - Phoenix uses the Node library `brunch` to compile assets.
+# The official node instructions want you to pipe a script from the
+# internet through sudo. There are alternatives:
+# https://www.joyent.com/blog/installing-node-and-npm
+RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && apt-get install -y nodejs
 
-ENV DEBIAN_FRONTEND noninteractive
+# Install other stable dependencies that don't change often
 
-# Elixir requires UTF-8
-RUN locale-gen en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+# Compile app
+RUN mkdir /app
+WORKDIR /app
 
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y sudo wget curl inotify-tools git build-essential zip unzip
+# Install Elixir Deps
+ADD mix.* ./
+RUN MIX_ENV=dev mix local.rebar
+RUN MIX_ENV=dev mix local.hex --force
+RUN MIX_ENV=dev mix deps.get
 
-# Install Node.js (>= 5.0.0) and NPM in order to satisfy brunch.io dependencies
-# See http://www.phoenixframework.org/docs/installation#section-node-js-5-0-0-
-RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - && apt-get install -y nodejs
+# Install Node Deps
+ADD package.json ./
+RUN npm install
 
-# Download and install Erlang package
-RUN wget http://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb \
- && dpkg -i erlang-solutions_1.0_all.deb \
- && apt-get update
+#Install and deal w/postgres (configure username/password to be like database)
+#RUN sudo lsof -i :5432
+#RUN sudo apt-get install -y postgresql postgresql-client
+#RUN sudo service postgresql start
+#RUN pg_lsclusters
+#RUN pg_ctlcluster 9.3 main start
+#RUN less /var/log/postgresql/postgresql-9.3-main.log
+#linking here does not work
+#RUN sudo ln -s /tmp/.s.PGSQL.5432 /var/run/postgresql/.s.PGSQL.5432
+#RUN sudo rm /var/run/postgresql/.s.PGSQL.5432.lock
+#RUN sudo service postgresql restart
+#RUN sudo psql postgres -c "CREATE USER postgres;"
+#RUN sudo psql postgres -c "ALTER USER postgres PASSWORD 'postgres';"
+#RUN sudo /etc/init.d/postgresql restart
 
-ENV ERLANG_VERSION 1:20.0
 
+# Install app
+ADD . .
+RUN MIX_ENV=dev mix compile
 
+# Compile assets
+RUN NODE_ENV=dev node_modules/brunch/bin/brunch build --production
+RUN MIX_ENV=dev mix phx.digest
 
-
-# Install Erlang
-RUN apt-get install -y esl-erlang=$ERLANG_VERSION && rm erlang-solutions_1.0_all.deb
-
-ENV ELIXIR_VERSION 1.5.0
-
-# Install Elixir
-RUN mkdir /opt/elixir \
-  && cd /opt/elixir \
-  && curl -O -L https://github.com/elixir-lang/elixir/releases/download/v$ELIXIR_VERSION/Precompiled.zip \
-  && unzip Precompiled.zip \
-  && cd /usr/local/bin \
-  && ln -s /opt/elixir/bin/elixir \
-  && ln -s /opt/elixir/bin/elixirc \
-  && ln -s /opt/elixir/bin/iex \
-  && ln -s /opt/elixir/bin/mix
-
-ENV PHOENIX_VERSION 1.3.0
-
-# Install the Phoenix Mix archive
-RUN mix archive.install --force https://github.com/phoenixframework/archives/raw/master/phx_new-$PHOENIX_VERSION.ez
-
-# Install hex & rebar
-RUN mix local.hex --force && \
-  mix local.rebar --force && \
-  mix hex.info
-
+# Exposes this port from the docker container to the host machine
 EXPOSE 4000
 
-WORKDIR /newsly_project
-# COPY . .
-# RUN ["chmod", "+x", "/newsly_project/startproj.sh"]
-# CMD ["/newsly_project/startproj.sh"]
+# handle Ecto database
+
+#RUN MIX_ENV=dev mix ecto.drop
+RUN MIX_ENV=dev mix ecto.create
+RUN MIX_ENV=dev mix ecto.migrate
+
+
+# The command to run when this image starts up
+CMD MIX_ENV=dev mix phx.server

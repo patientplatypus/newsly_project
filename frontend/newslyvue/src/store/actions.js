@@ -29,6 +29,18 @@ export const socketConnect = ({ commit }, {connectStatus}) => {
 
 }
 
+export const testButtonAction = ({ commit }) => {
+  console.log('inside testButtonAction in actions');
+  axios.get('http://newslyproduction14.m28mgmyx2v.us-west-2.elasticbeanstalk.com:4000/api/articles')
+  .then(response=>{
+    console.log("response from api/articles: ", response);
+    // commit('updateArticles', {articlereturn: response.data})
+  })
+  .catch(error=>{
+    console.log("PANIC ERROR IN api/articles : ", error);
+  });
+}
+
 export const channelPushLogin = ({ commit }, {message, username, password}) => {
   commit('channelPushLogin', {message, username, password})
 }
@@ -39,7 +51,8 @@ export const channelPushArticle = ({ commit }, { message, username, password, ar
 
 export const getArticles = ({ commit }) => {
   // console.log('inside getArticles in actions');
-  axios.get('http://localhost:4000/api/articles')
+
+  axios.get('http://newslyproduction14.m28mgmyx2v.us-west-2.elasticbeanstalk.com:4000/api/articles')
   .then(response=>{
     // console.log("response from api/articles: ", response);
     commit('updateArticles', {articlereturn: response.data})
@@ -81,7 +94,7 @@ export const getUserObj = ({ commit }, { username, password }) => {
   console.log('value of username: ', username);
   console.log('value of password: ', password);
 
-  axios.get('http://localhost:4000/api/user', {
+  axios.get('http://newslyproduction14.m28mgmyx2v.us-west-2.elasticbeanstalk.com:4000/api/user', {
     params: {
       username: username,
       password: password
@@ -105,7 +118,7 @@ export const getUserObj = ({ commit }, { username, password }) => {
 }
 
 export const getArticleComments = ({ commit }, {id}) => {
-  axios.get('http://localhost:4000/api/articles/'+id)
+  axios.get('http://newslyproduction14.m28mgmyx2v.us-west-2.elasticbeanstalk.com:4000/api/articles/'+id)
   .then(response=>{
     console.log("response from api/articles/id: ", response);
     commit('updateComments', {comments: response.data.comments})

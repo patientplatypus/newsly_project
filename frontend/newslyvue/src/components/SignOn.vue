@@ -4,6 +4,13 @@
       <h1>
         Sign On page
       </h1>
+    <div>
+      <p>
+        Test Button
+      </p>
+      <button v-on:click="testButton()">Test Button</button>
+    </div>
+
     </div>
     <br/><br/>
     <div v-if='userName!==null && userPass!==null'>
@@ -136,7 +143,8 @@ export default {
      'channelPushLogin',
      'saveProfilePic',
      'getUserObj',
-     'userObjnamepass'
+     'userObjnamepass',
+     'testButtonAction'
     ]),
     connectSocket: function(){
       this.socketConnect({connectStatus: this.connectStatus})
@@ -149,6 +157,9 @@ export default {
       this.password = null;
       this.saveProfilePic({pic: null})
       this.userObjnamepass({username: this.username, password: this.password});
+    },
+    testButton: function(){
+      this.testButtonAction()
     }
   }
 }

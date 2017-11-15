@@ -16,8 +16,11 @@ export const userObjnamepass = (state, {username, password}) => {
 export const socketConnect = (state) => {
   // console.log('inside socketConnect');
   state.connectStatus = true;
-  state.socket = new Socket("ws://localhost:4000/socket", {params: {token: window.userToken}})
+  state.socket = new Socket("ws://newslyproduction14.m28mgmyx2v.us-west-2.elasticbeanstalk.com:4000/socket", {params: {token: window.userToken}})
   state.socket.connect()
+    // .receive("ok", response => { console.log("Joined socket successfully", response) })
+    // .receive("error", response => { console.log("Unable to join socket", response) })
+
   state.channel =  state.socket.channel("room:lobby", {});
   state.broadcastChannel = state.socket.channel("room:broadcast", {})
 

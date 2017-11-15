@@ -45,15 +45,3 @@ config :logger, :console, format: "[$level] $message\n"
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.
 config :phoenix, :stacktrace_depth, 20
-
-# Configure your database
-config :newsly, Newsly.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  # username: "patientplatypus",
-  # password: "Fvnjty0b",
-  username: "patientplatypus",
-  password: "Fvnjty0b",
-  database: "newslydb",
-  hostname: "platypusnest.c9usvlx4atue.us-west-2.rds.amazonaws.com",
-  # sometimes hostname is db (like in the docker-compose method - play with this one)
-  pool_size: 10

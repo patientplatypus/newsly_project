@@ -34,21 +34,14 @@ config :newsly, Newsly.Repo,
   ssl: true
 
 config :ex_aws,
-  access_key_id: "AKIAJRU33JN2ZW65DWXA",
-  secret_access_key: "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",
+  access_key_id: "AKIAII7VHF3MIIUUCXWQ",
+  secret_access_key: "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",
   bucket_name: "phoenixprofilepicstoragebucket999",
   s3: [
    scheme: "https://",
    host: "phoenixprofilepicstoragebucket999.s3.amazonaws.com",
    region: "us-west-2"
   ]
-
-
-
-
-
-
-
 
 
 

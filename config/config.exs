@@ -25,7 +25,7 @@ config :logger, :console,
   config :newsly, Newsly.Endpoint,
     http: [port: 4000],
     url: [scheme: "http", host: "newslyproduction14.m28mgmyx2v.us-west-2.elasticbeanstalk.com", port: 4000],
-    secret_key_base: "odZ3VPbBou3vWtzgLSp1mzBNqhmn2Zjxc5bdQLFcoa5xEaFsYG6qwbjF7b5VzSsN",
+    secret_key_base: "odZ3VPbBoucgfxhgxNqhmkhkhygfrdyxFcoa5xEaFsYG6q;l;kj;lj;lkj5VzSsN",
     code_reloader: false,
     cache_static_manifest: "priv/static/manifest.json",
     server: true
@@ -104,7 +104,7 @@ import_config "#{Mix.env}.exs"
 # # Configures the endpoint
 # config :newsly, Newsly.Endpoint,
 #   url: [host: "localhost"],
-#   secret_key_base: "odZ3VPbBou3vWtzgLSp1mzBNqhmn2Zjxc5bdQLFcoa5xEaFsYG6qwbjF7b5VzSsN",
+#   secret_key_base: "odZ3VPbBoujkhl5xEaFsYG6qwbjF7b5VzSsN",
 #   render_errors: [view: Newsly.ErrorView, accepts: ~w(html json)],
 #   pubsub: [name: Newsly.PubSub,
 #            adapter: Phoenix.PubSub.PG2]

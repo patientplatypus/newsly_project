@@ -23,15 +23,15 @@ use Mix.Config
 
 use Mix.Config
 
-config :newsly, Newsly.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  database: "newslydb",
-  username: "patientplatypus",
-  password: "Fvnjtyb123",
-  hostname: "newsly-blah.us-west-2.elasticbeanstalk.com",
-  port: 5432,
-  pool_size: 20,
-  ssl: true
+# config :newsly, Newsly.Repo,
+#   adapter: Ecto.Adapters.Postgres,
+#   database: "newslydb",
+#   username: "patientplatypus",
+#   password: "Fvnjtyb123",
+#   hostname: "newsly-blah.us-west-2.elasticbeanstalk.com",
+#   port: 5432,
+#   pool_size: 20,
+#   ssl: true
 
 config :ex_aws,
   access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),

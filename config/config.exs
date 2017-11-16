@@ -27,7 +27,7 @@ config :logger, :console,
     url: [scheme: "http", host: "newslyproduction14.m28mgmyx2v.us-west-2.elasticbeanstalk.com", port: 4000],
     secret_key_base: "odZ3VPbBou3vWtzgLSp1mzBNqhmn2Zjxc5bdQLFcoa5xEaFsYG6qwbjF7b5VzSsN",
     code_reloader: false,
-    cache_static_manifest: "priv/static/manifest.json",
+    # cache_static_manifest: "priv/static/manifest.json",
     server: true
 
 

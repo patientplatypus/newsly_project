@@ -2,7 +2,7 @@
   "AWSEBDockerrunVersion": 1,
   "volumes": [
     {
-      "name": "newsly-app",
+      "name": "newsly-blah",
       "host": {
         "sourcePath": "/newsly_project"
       }
@@ -10,7 +10,7 @@
   ],
   "containerDefinitions": [
     {
-      "name": "newsly-app",
+      "name": "newsly-blah",
       "essential": true,
       "portMappings": [
         {

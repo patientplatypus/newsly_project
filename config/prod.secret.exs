@@ -40,16 +40,16 @@ config :ex_aws,
    region: "us-west-2"
   ]
 
-# config :newsly, Newsly.Repo,
-#   adapter: Ecto.Adapters.Postgres,
-#   # username: "patientplatypus",
-#   # password: "Fvnjty0b",
-#   username: System.get_env("USERNAME"),
-#   password: System.get_env("PASSWORD"),
-#   database: System.get_env("DATABASE"),
-#   hostname: System.get_env("DBHOST"),
-#   # sometimes hostname is db (like in the docker-compose method - play with this one)
-#   pool_size: 10
+config :newsly, Newsly.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  # username: "patientplatypus",
+  # password: "Fvnjty0b",
+  username: System.get_env("USERNAME"),
+  password: System.get_env("PASSWORD"),
+  database: System.get_env("DATABASE"),
+  hostname: System.get_env("DBHOST"),
+  # sometimes hostname is db (like in the docker-compose method - play with this one)
+  pool_size: 10
 
 
 config :newsly, Newsly.Endpoint,

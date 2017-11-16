@@ -7,6 +7,8 @@ FROM trenpixster/elixir:1.4.0
 # internet through sudo. There are alternatives:
 # https://www.joyent.com/blog/installing-node-and-npm
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && apt-get install -y nodejs
+ 
+
 
 # Install other stable dependencies that don't change often
 

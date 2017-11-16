@@ -1,0 +1,91 @@
+use Mix.Config
+
+# use Mix.Config
+
+# In this file, we keep production configuration that
+# you'll likely want to automate and keep away from
+# your version control system.
+#
+# You should document the content of this
+# file or create a script for recreating it, since it's
+# kept out of version control and might be hard to recover
+# or recreate for your teammates (or yourself later on).
+# config :newsly, Newsly.Endpoint,
+#   secret_key_base: "CK9kgF/l6ZO+OfwztaeqlXmFNvIasYTPx9pLPE2gWD36DM0ihHg+//NKAZMojA1L"
+#
+# # Configure your database
+# config :newsly, Newsly.Repo,
+#   adapter: Ecto.Adapters.Postgres,
+#   username: "postgres",
+#   password: "postgres",
+#   database: "newsly_prod",
+#   pool_size: 15
+
+use Mix.Config
+
+config :newsly, Newsly.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  database: "newslydb",
+  username: "patientplatypus",
+  password: "Fvnjtyb123",
+  hostname: "localhost",
+  port: 5432,
+  pool_size: 20,
+  ssl: true
+
+config :ex_aws,
+  access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
+  secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
+  bucket_name: System.get_env("BUCKET_NAME"),
+  s3: [
+   scheme: "https://",
+   host: System.get_env("BUCKET_NAME"),
+   region: "us-west-2"
+  ]
+
+  config :newsly, Newsly.Repo,
+    adapter: Ecto.Adapters.Postgres,
+    # username: "patientplatypus",
+    # password: "Fvnjty0b",
+    username: "patientplatypus",
+    password: "Fvnjty0b",
+    database: "newslydb",
+    hostname: "platypusnest.c9usvlx4atue.us-west-2.rds.amazonaws.com",
+    # sometimes hostname is db (like in the docker-compose method - play with this one)
+    pool_size: 10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# In this file, we keep production configuration that
+# you'll likely want to automate and keep away from
+# your version control system.
+#
+# You should document the content of this
+# file or create a script for recreating it, since it's
+# kept out of version control and might be hard to recover
+# or recreate for your teammates (or yourself later on).
+# config :newsly, Newsly.Endpoint,
+#   secret_key_base: "CK9kgF/l6ZO+OfwztaeqlXmFNvIasYTPx9pLPE2gWD36DM0ihHg+//NKAZMojA1L"
+#
+# # Configure your database
+# config :newsly, Newsly.Repo,
+#   adapter: Ecto.Adapters.Postgres,
+#   username: "postgres",
+#   password: "postgres",
+#   database: "newsly_prod",
+#   pool_size: 15

@@ -25,7 +25,7 @@ config :logger, :console,
   config :newsly, Newsly.Endpoint,
     http: [port: 4000],
     url: [scheme: "http", host: System.get_env("HOST"), port: 4000],
-    secret_key_base:System.get_env("SECRET_KEY_BASE"),
+    secret_key_base: System.get_env("SECRET_KEY_BASE"),
     code_reloader: false,
     # cache_static_manifest: "priv/static/manifest.json",
     server: true

@@ -22,13 +22,13 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-  config :newsly, Newsly.Endpoint,
-    http: [port: 4000],
-    url: [scheme: "http", host: System.get_env("HOST"), port: 4000],
-    secret_key_base: System.get_env("SECRET_KEY_BASE"),
-    code_reloader: false,
-    # cache_static_manifest: "priv/static/manifest.json",
-    server: true
+# config :newsly, Newsly.Endpoint,
+#   http: [port: 4000],
+#   url: [scheme: "http", host: System.get_env("HOST"), port: 4000],
+#   secret_key_base: System.get_env("SECRET_KEY_BASE"),
+#   code_reloader: false,
+#   # cache_static_manifest: "priv/static/manifest.json",
+#   server: true
 
 
 

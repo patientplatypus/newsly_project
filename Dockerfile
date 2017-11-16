@@ -30,7 +30,7 @@ ENV SECRET_KEY_BASE=odZ3VPbBou3vWtzgLSp1mzBNqhmn2Zjxc5bdQLFcoa5xEaFsYG6qwbjF7b5V
 ENV HOST=newsly-project-trial-again.us-west-2.elasticbeanstalk.com
 ENV DBHOST=platypusnest.c9usvlx4atue.us-west-2.rds.amazonaws.com
 ENV USERNAME=patientplatypus
-ENV PASSWORD=Fvnjtyb123
+ENV PASSWORD=Fvnjtyb0
 ENV DATABASE=newslydb
 
 

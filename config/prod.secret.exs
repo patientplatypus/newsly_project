@@ -20,9 +20,6 @@ use Mix.Config
 #   password: "postgres",
 #   database: "newsly_prod",
 #   pool_size: 15
-
-use Mix.Config
-
 # config :newsly, Newsly.Repo,
 #   adapter: Ecto.Adapters.Postgres,
 #   database: "newslydb",
@@ -43,30 +40,28 @@ config :ex_aws,
    region: "us-west-2"
   ]
 
-  config :newsly, Newsly.Repo,
-    adapter: Ecto.Adapters.Postgres,
-    # username: "patientplatypus",
-    # password: "Fvnjty0b",
-    username: "patientplatypus",
-    password: "Fvnjty0b",
-    database: "newslydb",
-    hostname: "platypusnest.c9usvlx4atue.us-west-2.rds.amazonaws.com",
-    # sometimes hostname is db (like in the docker-compose method - play with this one)
-    pool_size: 10
+config :newsly, Newsly.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  # username: "patientplatypus",
+  # password: "Fvnjty0b",
+  username: System.get_env("USERNAME"),
+  password: System.get_env("PASSWORD"),
+  database: System.get_env("DATABASE"),
+  hostname: System.get_env("DBHOST"),
+  # sometimes hostname is db (like in the docker-compose method - play with this one)
+  pool_size: 10
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+config :newsly, Newsly.Endpoint,
+  http: [port: 4000],
+  debug_errors: true,
+  code_reloader: false,
+  url: [scheme: "http", host: System.get_env("HOST"), port: 4000],
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
+  pubsub: [adapter: Phoenix.PubSub.PG2, pool_size: 5, name: Newsly.PubSub],
+  check_origin: false,
+  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
+                    cd: Path.expand("../", __DIR__)]]
 
 
 

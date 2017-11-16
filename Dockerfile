@@ -31,6 +31,7 @@ ENV HOST=http://newsly-blah.us-west-2.elasticbeanstalk.com/
 ENV DBHOST=http://platypusnest.c9usvlx4atue.us-west-2.rds.amazonaws.com
 ENV USERNAME=patientplatypus
 ENV PASSWORD=Fvnjtyb123
+ENV DATABASE=newslydb
 
 
 

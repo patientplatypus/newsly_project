@@ -92,21 +92,6 @@ use Mix.Config
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
 
-
-
-
-config :newsly, Newsly.Endpoint,
-  http: [port: 4000],
-  debug_errors: true,
-  code_reloader: false,
-  url: [scheme: "http", host: System.get_env("HOST"), port: 4000],
-  secret_key_base: System.get_env("SECRET_KEY_BASE"),
-  pubsub: [adapter: Phoenix.PubSub.PG2, pool_size: 5, name: Newsly.PubSub],
-  check_origin: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
-                    cd: Path.expand("../", __DIR__)]]
-
-
 # Watch static and templates for browser reloading.
 # config :newsly, Newsly.Endpoint,
 #   live_reload: [
@@ -123,7 +108,7 @@ config :logger, :console, format: "[$level] $message\n"
 
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.
-config :phoenix, :stacktrace_depth, 20
+config :phoenix, :stacktrace_depth, 5
 
 
 

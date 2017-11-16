@@ -28,7 +28,7 @@ config :newsly, Newsly.Repo,
   database: "newslydb",
   username: "patientplatypus",
   password: "Fvnjtyb123",
-  hostname: "localhost",
+  hostname: "newsly-blah.us-west-2.elasticbeanstalk.com",
   port: 5432,
   pool_size: 20,
   ssl: true

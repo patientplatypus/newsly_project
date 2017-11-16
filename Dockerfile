@@ -7,7 +7,7 @@ FROM trenpixster/elixir:1.4.0
 # internet through sudo. There are alternatives:
 # https://www.joyent.com/blog/installing-node-and-npm
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && apt-get install -y nodejs
- 
+
 
 
 # Install other stable dependencies that don't change often
@@ -21,6 +21,18 @@ ADD mix.* ./
 RUN MIX_ENV=prod mix local.rebar
 RUN MIX_ENV=prod mix local.hex --force
 RUN MIX_ENV=prod mix deps.get
+
+
+ENV AWS_ACCESS_KEY_ID=AKIAJAZGUYZMLSVARHIA
+ENV AWS_SECRET_ACCESS_KEY=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
+ENV BUCKET_NAME=phoenixprofilepicstoragebucket999
+ENV SECRET_KEY_BASE=odZ3VPbBou3vWtzgLSp1mzBNqhmn2Zjxc5bdQLFcoa5xEaFsYG6qwbjF7b5VzSsN
+ENV HOST=localhost
+ENV DBHOST=platypusnest.c9usvlx4atue.us-west-2.rds.amazonaws.com
+ENV USERNAME=patientplatypus
+ENV PASSWORD=Fvnjtyb123
+
+
 
 # Install Node Deps
 ADD package.json ./

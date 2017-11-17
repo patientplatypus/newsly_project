@@ -51,13 +51,6 @@ RUN MIX_ENV=prod mix phx.digest
 # Exposes this port from the docker container to the host machine
 EXPOSE 4000
 
-# handle Ecto database (may not be needed)
-
-#RUN MIX_ENV=prod mix ecto.drop
-#RUN MIX_ENV=prod mix ecto.create
-#RUN MIX_ENV=prod mix ecto.migrate
-
-
 # The command to run when this image starts up
 # CMD MIX_ENV=prod mix phx.server
 CMD echo hello there sailor && MIX_ENV=prod mix ecto.migrate && MIX_ENV=prod mix phoenix.server

@@ -18,8 +18,8 @@
       "essential": true,
       "portMappings": [
         {
-          "hostPort": 80,
-          "containerPort": 4000
+          "containerPort": 4000,
+          "hostPort": 80
         }
       ]
     }

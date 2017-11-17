@@ -18,7 +18,7 @@ defmodule Newsly.Router do
 
     # get "/", PageController, :index
     resources "/comment", CommentsController
-
+    get "/", HealthCheck
   end
 
   scope "/api", Newsly do

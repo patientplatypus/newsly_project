@@ -2,7 +2,8 @@ defmodule Newsly.HealthCheck do
   use Newsly.Web, :controller
 
   def index(conn, _params) do
-    send_resp(conn, :ok, "")
+    IO.puts "INSIDE HEALTHCHECK"
+    send_resp(conn, 200, "")
   end
 
 

@@ -1,23 +1,19 @@
 {
-  "AWSEBDockerrunVersion": 1,
-  "volumes": [
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "newsly_image",
+    "Update": "true"
+  },
+  "Ports": [
     {
-      "name": "newsly-blah",
-      "host": {
-        "sourcePath": "/newsly_project"
-      }
+      "ContainerPort": "4000"
     }
   ],
-  "containerDefinitions": [
+  "Volumes": [
     {
-      "name": "newsly-blah",
-      "essential": true,
-      "portMappings": [
-        {
-          "hostPort": 80,
-          "containerPort": 4000
-        }
-      ]
+      "HostDirectory": "/var/app/mydb",
+      "ContainerDirectory": "/etc/mysql"
     }
-  ]
+  ],
+  "Logging": "/var/log/nginx"
 }

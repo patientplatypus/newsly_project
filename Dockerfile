@@ -1,26 +1,61 @@
-# Set the Docker image you want to base your image off.
-# I chose this one because it has Elixir preinstalled.
-FROM trenpixster/elixir:1.4.0
+# Versions
+#
+# Erlang: 1:20.0
+# Elixir: 1.5.0
+# Phoenix: 1.3.0
 
-# Setup Node - Phoenix uses the Node library `brunch` to compile assets.
-# The official node instructions want you to pipe a script from the
-# internet through sudo. There are alternatives:
-# https://www.joyent.com/blog/installing-node-and-npm
-RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && apt-get install -y nodejs
+FROM ubuntu:14.04
+
+ENV DEBIAN_FRONTEND noninteractive
+
+# Elixir requires UTF-8
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y sudo wget curl inotify-tools git build-essential zip unzip
+
+# Install Node.js (>= 5.0.0) and NPM in order to satisfy brunch.io dependencies
+# See http://www.phoenixframework.org/docs/installation#section-node-js-5-0-0-
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - && apt-get install -y nodejs
+
+# Download and install Erlang package
+RUN wget http://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb \
+ && dpkg -i erlang-solutions_1.0_all.deb \
+ && apt-get update
+
+ENV ERLANG_VERSION 1:20.0
 
 
 
-# Install other stable dependencies that don't change often
 
-# Compile app
-RUN mkdir /app
-WORKDIR /app
+# Install Erlang
+RUN apt-get install -y esl-erlang=$ERLANG_VERSION && rm erlang-solutions_1.0_all.deb
 
-# Install Elixir Deps
-ADD mix.* ./
-RUN MIX_ENV=prod mix local.rebar
-RUN MIX_ENV=prod mix local.hex --force
-RUN MIX_ENV=prod mix deps.get
+ENV ELIXIR_VERSION 1.5.0
+
+# Install Elixir
+RUN mkdir /opt/elixir \
+  && cd /opt/elixir \
+  && curl -O -L https://github.com/elixir-lang/elixir/releases/download/v$ELIXIR_VERSION/Precompiled.zip \
+  && unzip Precompiled.zip \
+  && cd /usr/local/bin \
+  && ln -s /opt/elixir/bin/elixir \
+  && ln -s /opt/elixir/bin/elixirc \
+  && ln -s /opt/elixir/bin/iex \
+  && ln -s /opt/elixir/bin/mix
+
+ENV PHOENIX_VERSION 1.3.0
+
+# Install the Phoenix Mix archive
+RUN mix archive.install --force https://github.com/phoenixframework/archives/raw/master/phx_new-$PHOENIX_VERSION.ez
+
+# Install hex & rebar
+RUN mix local.hex --force && \
+  mix local.rebar --force && \
+  mix hex.info
 
 
 ENV AWS_ACCESS_KEY_ID=AKIAJAZGUYZMLSVARHIA
@@ -33,24 +68,11 @@ ENV USERNAME=patientplatypus
 ENV PASSWORD=Fvnjty0b
 ENV DATABASE=newslydb
 
-RUN MIX_ENV=prod mix ecto.create
-
-# Install Node Deps
-ADD package.json ./
-RUN npm install
 
 
-# Install app
-ADD . .
-RUN MIX_ENV=prod mix compile
-
-# Compile assets
-RUN NODE_ENV=prod node_modules/brunch/bin/brunch build --production
-RUN MIX_ENV=prod mix phx.digest
-
-# Exposes this port from the docker container to the host machine
 EXPOSE 4000
 
-# The command to run when this image starts up
-# CMD MIX_ENV=prod mix phx.server
-CMD echo hello there sailor && MIX_ENV=prod mix ecto.migrate && MIX_ENV=prod mix phoenix.server
+WORKDIR /newsly_project
+# COPY . .
+# RUN ["chmod", "+x", "/newsly_project/startproj.sh"]
+# CMD ["/newsly_project/startproj.sh"]

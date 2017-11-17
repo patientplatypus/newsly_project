@@ -13,7 +13,7 @@
   ],
   "Volumes": [
     {
-      "HostDirectory": "/newsly_project"
+      "HostDirectory": "/var/app/current"
     }
   ],
   "Logging": "/var/log/nginx"

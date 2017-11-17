@@ -11,9 +11,12 @@
       "hostPort": "80"
     }
   ],
-  "Volumes": [
+  "volumes": [
     {
-      "HostDirectory": "/app"
+      "name": "newsly-app",
+      "host": {
+        "sourcePath": "/app"
+      }
     }
   ],
   "Logging": "/var/log/nginx"

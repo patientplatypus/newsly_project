@@ -1,8 +1,12 @@
 {
   "AWSEBDockerrunVersion": 1,
+  "Image": {
+    "Name": "344677375614.dkr.ecr.us-west-2.amazonaws.com/newslyproduction",
+    "Update": "true"
+  },
   "volumes": [
     {
-      "name": "344677375614.dkr.ecr.us-west-2.amazonaws.com/newslyproduction",
+      "name": "newslyproduction",
       "host": {
         "sourcePath": "/newsly_project"
       }
@@ -10,7 +14,7 @@
   ],
   "containerDefinitions": [
     {
-      "name": "344677375614.dkr.ecr.us-west-2.amazonaws.com/newslyproduction",
+      "name": "newslyproduction",
       "essential": true,
       "portMappings": [
         {

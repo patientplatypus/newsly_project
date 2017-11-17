@@ -72,6 +72,8 @@ EXPOSE 4000
 #RUN MIX_ENV=prod mix ecto.create
 #RUN MIX_ENV=prod mix ecto.migrate
 
+RUN echo hello there sailor
+
 
 # The command to run when this image starts up
 # CMD MIX_ENV=prod mix phx.server

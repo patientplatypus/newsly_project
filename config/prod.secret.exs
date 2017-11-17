@@ -53,10 +53,9 @@ config :newsly, Newsly.Repo,
 
 
 config :newsly, Newsly.Endpoint,
-  http: [port: 4000],
   debug_errors: true,
   code_reloader: false,
-  url: [port: 4000],
+  url: [scheme: "http", host: System.get_env("HOST"), port: 4000],
   secret_key_base: System.get_env("SECRET_KEY_BASE"),
   pubsub: [adapter: Phoenix.PubSub.PG2, pool_size: 5, name: Newsly.PubSub],
   check_origin: false,

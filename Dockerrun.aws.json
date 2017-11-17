@@ -1,27 +1,20 @@
+
 {
-  "AWSEBDockerrunVersion": 1,
+  "AWSEBDockerrunVersion": "1",
   "Image": {
     "Name": "344677375614.dkr.ecr.us-west-2.amazonaws.com/newslyproduction",
     "Update": "true"
   },
-  "volumes": [
+  "Ports": [
     {
-      "name": "newslyproduction",
-      "host": {
-        "sourcePath": "/newsly_project"
-      }
+      "ContainerPort": "4000",
+      "hostPort": "80"
     }
   ],
-  "containerDefinitions": [
+  "Volumes": [
     {
-      "name": "newslyproduction",
-      "essential": true,
-      "portMappings": [
-        {
-          "containerPort": "4000",
-          "hostPort": "80"
-        }
-      ]
+      "HostDirectory": "/newsly_project"
     }
-  ]
+  ],
+  "Logging": "/var/log/nginx"
 }

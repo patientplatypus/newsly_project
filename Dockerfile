@@ -39,21 +39,6 @@ RUN MIX_ENV=prod mix ecto.create
 ADD package.json ./
 RUN npm install
 
-#Install and deal w/postgres (configure username/password to be like database)
-#RUN sudo lsof -i :5432
-#RUN sudo apt-get install -y postgresql postgresql-client
-#RUN sudo service postgresql start
-#RUN pg_lsclusters
-#RUN pg_ctlcluster 9.3 main start
-#RUN less /var/log/postgresql/postgresql-9.3-main.log
-#linking here does not work
-#RUN sudo ln -s /tmp/.s.PGSQL.5432 /var/run/postgresql/.s.PGSQL.5432
-#RUN sudo rm /var/run/postgresql/.s.PGSQL.5432.lock
-#RUN sudo service postgresql restart
-#RUN sudo psql postgres -c "CREATE USER postgres;"
-#RUN sudo psql postgres -c "ALTER USER postgres PASSWORD 'postgres';"
-#RUN sudo /etc/init.d/postgresql restart
-
 
 # Install app
 ADD . .
@@ -75,5 +60,4 @@ EXPOSE 4000
 
 # The command to run when this image starts up
 # CMD MIX_ENV=prod mix phx.server
-CMD echo hello there sailor && MIX_ENV=prod mix ecto.migrate && \
-  MIX_ENV=prod mix phoenix.server
+CMD echo hello there sailor && MIX_ENV=prod mix ecto.migrate && MIX_ENV=prod mix phoenix.server

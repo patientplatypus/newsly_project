@@ -12,8 +12,10 @@
   ],
   "volumes": [
     {
-      "HostDirectory": "/var/app/",
-      "ContainerDirectory": "/app"
+      "name": "newsly-app",
+      "host": {
+        "sourcePath": "/app"
+      }
     }
-  ]
+  ],
 }

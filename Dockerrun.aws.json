@@ -15,6 +15,5 @@
       "HostDirectory": "/var/app/",
       "ContainerDirectory": "/app"
     }
-  ],
-  "Logging": "/var/log/nginx"
+  ]
 }

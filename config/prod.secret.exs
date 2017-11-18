@@ -49,6 +49,7 @@ config :newsly, Newsly.Repo,
   database: System.get_env("DATABASE"),
   hostname: System.get_env("DBHOST"),
   # sometimes hostname is db (like in the docker-compose method - play with this one)
+  port: System.get_env("DBPORT") || 5432,
   pool_size: 10
 
 

@@ -28,6 +28,7 @@ ENV AWS_SECRET_ACCESS_KEY=KUaM745522C7tLr4tXTlgEKCdMOQ0W4wGn0RiIpL
 ENV BUCKET_NAME=phoenixprofilepicstoragebucket999
 ENV SECRET_KEY_BASE=odZ3VPbBou3vWtzgLSp1mzBNqhmn2Zjxc5bdQLFcoa5xEaFsYG6qwbjF7b5VzSsN
 ENV HOST=localhost
+ENV DBPORT=5432
 ENV DBHOST=platypusnest.c9usvlx4atue.us-west-2.rds.amazonaws.com
 ENV USERNAME=patientplatypus
 ENV PASSWORD=Fvnjty0b

@@ -1,4 +1,3 @@
-
 {
   "AWSEBDockerrunVersion": "1",
   "Image": {
@@ -13,10 +12,8 @@
   ],
   "volumes": [
     {
-      "name": "newsly-app",
-      "host": {
-        "sourcePath": "/app"
-      }
+      "HostDirectory": "/var/app/",
+      "ContainerDirectory": "/app"
     }
   ],
   "Logging": "/var/log/nginx"

@@ -2,7 +2,7 @@
 {
   "AWSEBDockerrunVersion": "1",
   "Image": {
-    "Name": "344677375614.dkr.ecr.us-west-2.amazonaws.com/newslyproduction",
+    "Name": "344677375614.dkr.ecr.us-west-2.amazonaws.com/newslypush",
     "Update": "true"
   },
   "Ports": [

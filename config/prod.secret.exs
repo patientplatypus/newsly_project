@@ -36,7 +36,7 @@ config :ex_aws,
   bucket_name: System.get_env("BUCKET_NAME"),
   s3: [
    scheme: "https://",
-   host: System.get_env("BUCKET_NAME"),
+   host: "phoenixprofilepicstoragebucket999.s3.amazonaws.com",
    region: "us-west-2",
    port: 80
   ]

@@ -36,9 +36,19 @@ defmodule Newsly.AssetStore do
     IO.inspect filename
 
    # Upload to S3
-   {:ok, response} =
-     S3.put_object(bucket_name, filename, image_binary)
-     |> ExAws.request()
+  #  {:ok, response} =
+  #    S3.put_object(bucket_name, filename, image_binary)
+  #    |> ExAws.request()
+
+   case S3.put_object(bucket_name, filename, image_binary)
+   |> ExAws.request() do
+     {:ok, response} ->
+       IO.puts "response ok"
+       IO.inspect response
+     {:error, error} ->
+       IO.puts "error boo"
+       IO.inspect error
+   end
 
 
     #  Work on deleting item:

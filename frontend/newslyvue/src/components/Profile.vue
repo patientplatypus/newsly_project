@@ -111,7 +111,7 @@ export default {
       reader.readAsDataURL(file);
     },
     upload(){
-        axios.post('http://localhost:4000/api/upload/',{
+        axios.post('https://hiddockerfile.us-west-2.elasticbeanstalk.com:443/api/upload',{
           image: this.sendimage,
           username: this.userName,
           password: this.userPass

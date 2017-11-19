@@ -8,6 +8,10 @@
     {
       "ContainerPort": "4000",
       "hostPort": "80"
+    },
+    {
+      "ContainerPort": "4000",
+      "hostPort": "463"
     }
   ],
   "volumes": [

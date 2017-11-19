@@ -37,8 +37,7 @@ config :ex_aws,
   s3: [
    scheme: "https://",
    host: "phoenixprofilepicstoragebucket999.s3.amazonaws.com",
-   region: "us-west-2",
-   port: 80
+   region: "us-west-2"
   ]
 
 config :newsly, Newsly.Repo,

@@ -111,7 +111,7 @@ export default {
       reader.readAsDataURL(file);
     },
     upload(){
-        axios.post('http://newslyproject0011.us-west-2.elasticbeanstalk.com:80/api/upload',{
+        axios.post('http://newslyproject1051.us-west-2.elasticbeanstalk.com:80/api/upload',{
           image: this.sendimage,
           username: this.userName,
           password: this.userPass

@@ -31,7 +31,7 @@ export const socketConnect = ({ commit }, {connectStatus}) => {
 
 export const testButtonAction = ({ commit }) => {
   console.log('inside testButtonAction in actions');
-  axios.get('http://newslyproject0011.us-west-2.elasticbeanstalk.com:80/api/articles')
+  axios.get('http://newslyproject1051.us-west-2.elasticbeanstalk.com:80/api/articles')
   .then(response=>{
     console.log("response from api/articles: ", response);
     // commit('updateArticles', {articlereturn: response.data})
@@ -52,7 +52,7 @@ export const channelPushArticle = ({ commit }, { message, username, password, ar
 export const getArticles = ({ commit }) => {
   // console.log('inside getArticles in actions');
 
-  axios.get('http://newslyproject0011.us-west-2.elasticbeanstalk.com:80/api/articles')
+  axios.get('http://newslyproject1051.us-west-2.elasticbeanstalk.com:80/api/articles')
   .then(response=>{
     // console.log("response from api/articles: ", response);
     commit('updateArticles', {articlereturn: response.data})
@@ -94,7 +94,7 @@ export const getUserObj = ({ commit }, { username, password }) => {
   console.log('value of username: ', username);
   console.log('value of password: ', password);
 
-  axios.get('http://newslyproject0011.us-west-2.elasticbeanstalk.com:80/api/user', {
+  axios.get('http://newslyproject1051.us-west-2.elasticbeanstalk.com:80/api/user', {
     params: {
       username: username,
       password: password
@@ -118,7 +118,7 @@ export const getUserObj = ({ commit }, { username, password }) => {
 }
 
 export const getArticleComments = ({ commit }, {id}) => {
-  axios.get('http://newslyproject0011.us-west-2.elasticbeanstalk.com:80/api/articles/'+id)
+  axios.get('http://newslyproject1051.us-west-2.elasticbeanstalk.com:80/api/articles/'+id)
   .then(response=>{
     console.log("response from api/articles/id: ", response);
     commit('updateComments', {comments: response.data.comments})

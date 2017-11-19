@@ -31,9 +31,9 @@ use Mix.Config
 #   ssl: true
 
 config :ex_aws,
-  access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
-  secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
-  bucket_name: System.get_env("BUCKET_NAME"),
+  access_key_id: {:system, "AWS_ACCESS_KEY_ID"}
+  secret_access_key: {:system, "AWS_SECRET_ACCESS_KEY"},
+  bucket_name: {:system, "BUCKET_NAME"},
   s3: [
    scheme: "https://",
    host: "phoenixprofilepicstoragebucket999.s3.amazonaws.com",

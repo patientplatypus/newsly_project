@@ -37,7 +37,8 @@ config :ex_aws,
   s3: [
    scheme: "https://",
    host: System.get_env("BUCKET_NAME"),
-   region: "us-west-2"
+   region: "us-west-2",
+   port: 80
   ]
 
 config :newsly, Newsly.Repo,

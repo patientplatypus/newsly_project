@@ -23,7 +23,7 @@ defmodule Newsly.AssetStore do
    access_key  = System.get_env("AWS_ACCESS_KEY_ID")
    secret_key  = System.get_env("AWS_SECRET_ACCESS_KEY")
 
-
+   ExAws.Config.new(:s3)
 
    # Decode the image
    {:ok, image_binary} = Base.decode64(image_base64)

@@ -60,20 +60,6 @@ defmodule Newsly.AssetStore do
    IO.puts "after S3 push"
    IO.puts "**********"
 
-   IO.puts "**********"
-   IO.puts "before S3 push"
-   IO.puts "**********"
-
-   {:error, error} =
-    S3.put_object(bucket_name, filename, image_binary)
-    |> ExAws.request()
-
-   IO.puts "**********"
-   IO.puts "after of :error"
-   IO.inspect error
-   # IO.puts error
-   IO.puts "**********"
-
   #  case S3.put_object(bucket_name, filename, image_binary)
   #  |> ExAws.request() do
   #    {:ok, response} ->

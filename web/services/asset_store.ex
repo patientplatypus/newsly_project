@@ -36,19 +36,44 @@ defmodule Newsly.AssetStore do
     IO.inspect filename
 
    # Upload to S3
-  #  {:ok, response} =
-  #    S3.put_object(bucket_name, filename, image_binary)
-  #    |> ExAws.request()
 
-   case S3.put_object(bucket_name, filename, image_binary)
-   |> ExAws.request() do
-     {:ok, response} ->
-       IO.puts "response ok"
-       IO.inspect response
-     {:error, error} ->
-       IO.puts "error boo"
-       IO.inspect error
-   end
+   IO.puts "**********"
+   IO.puts "before S3 push"
+   IO.puts "**********"
+
+   {:ok, response} =
+     S3.put_object(bucket_name, filename, image_binary)
+     |> ExAws.request()
+
+   {:error, error} =
+    S3.put_object(bucket_name, filename, image_binary)
+    |> ExAws.request()
+
+   IO.puts "**********"
+   IO.puts "after S3 push"
+   IO.puts "**********"
+
+   IO.puts "**********"
+   IO.puts "value of :ok"
+   IO.puts "**********"
+   IO.inspect response
+   IO.puts "**********"
+
+
+   IO.puts "**********"
+   IO.puts "after of :error"
+   IO.inspect error
+   IO.puts "**********"
+
+  #  case S3.put_object(bucket_name, filename, image_binary)
+  #  |> ExAws.request() do
+  #    {:ok, response} ->
+  #      IO.puts "response ok"
+  #      IO.inspect response
+  #    {:error, error} ->
+  #      IO.puts "error boo"
+  #      IO.inspect error
+  #  end
 
 
     #  Work on deleting item:

@@ -16,7 +16,7 @@ export const userObjnamepass = (state, {username, password}) => {
 export const socketConnect = (state) => {
   // console.log('inside socketConnect');
   state.connectStatus = true;
-  state.socket = new Socket("ws://newslyproject1051.us-west-2.elasticbeanstalk.com:80/socket", {params: {token: window.userToken}})
+  state.socket = new Socket("ws://newslyproject2210.us-west-2.elasticbeanstalk.com:80/socket", {params: {token: window.userToken}})
   state.socket.connect()
     // .receive("ok", response => { console.log("Joined socket successfully", response) })
     // .receive("error", response => { console.log("Unable to join socket", response) })

@@ -45,20 +45,24 @@ defmodule Newsly.AssetStore do
      S3.put_object(bucket_name, filename, image_binary)
      |> ExAws.request()
 
-   {:error, error} =
-    S3.put_object(bucket_name, filename, image_binary)
-    |> ExAws.request()
-
-   IO.puts "**********"
-   IO.puts "after S3 push"
-   IO.puts "**********"
-
    IO.puts "**********"
    IO.puts "value of :ok"
    IO.puts "**********"
    IO.inspect response
    IO.puts "**********"
 
+
+   IO.puts "**********"
+   IO.puts "after S3 push"
+   IO.puts "**********"
+
+   IO.puts "**********"
+   IO.puts "before S3 push"
+   IO.puts "**********"
+
+   {:error, error} =
+    S3.put_object(bucket_name, filename, image_binary)
+    |> ExAws.request()
 
    IO.puts "**********"
    IO.puts "after of :error"

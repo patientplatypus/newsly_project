@@ -26,6 +26,9 @@ defmodule Newsly.AssetStore do
    # Decode the image
    {:ok, image_binary} = Base.decode64(image_base64)
 
+   IO.puts "value of image binary"
+   IO.inspect image_binary
+
    # Generate a unique filename
    filename =
      image_binary

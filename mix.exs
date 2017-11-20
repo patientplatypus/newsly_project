@@ -44,10 +44,12 @@ defmodule Newsly.Mixfile do
       {:cors_plug, "~> 1.2"},
       {:plug, "~> 1.3"},
       {:distillery, "~> 1.0"},
-      {:ex_aws, "~> 1.1"},
+      {:ex_aws, "~> 2.0"},
+      {:ex_aws_s3, "~> 2.0"},
       {:uuid, "~> 1.1"},
       {:poison, "~> 2.0"},
       {:hackney, "~> 1.6"},
+      {:sweet_xml, "~> 0.6"},
     ]
   end
 

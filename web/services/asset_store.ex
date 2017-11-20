@@ -49,6 +49,7 @@ defmodule Newsly.AssetStore do
    IO.puts "value of :ok"
    IO.puts "**********"
    IO.inspect response
+   IO.puts response
    IO.puts "**********"
 
 
@@ -67,6 +68,7 @@ defmodule Newsly.AssetStore do
    IO.puts "**********"
    IO.puts "after of :error"
    IO.inspect error
+   IO.puts error
    IO.puts "**********"
 
   #  case S3.put_object(bucket_name, filename, image_binary)

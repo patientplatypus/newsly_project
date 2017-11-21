@@ -2,19 +2,6 @@
 
 # First things first...
 
-## This project won't compile - why not?
-This project will compile and run on my machine, but not on other people's computers? Why is that?
-The reason is that my .gitignore files are specifically ignoring S3 services, and passwords for my environment variables (as they should).
-So....
-
-## TO RUN LOCALLY
-1. Navigate to root and follow the directions [here](https://github.com/dreamingechoes/docker-elixir-phoenix) to get the docker file up and running for the backend.
-2. cd into the front end folder and
-  * `npm install`
-  * `npm run dev`
-3. Everything *should* run, *except* the profile page as I do not include my AWS credentials.
-4. This is a new and active production, so for any questions, please feel free to email pweyand@gmail.com.
-
 # What is this project?
 
 ## Overview
@@ -40,6 +27,7 @@ So....
 
 
 # How this Program is Organized
+## Programming Spec
 ![Screenshot](/NewslyProgramSpecs.jpg?raw=true "Program Specs")
 1. The above may seem complicated at first, but treat it as a reference as you walk through the application. The entrypoint for the frontend is App.js, and the back should be the Router file or the User Socket/Room Channel. If you start at one of these two locations the above should point every component to every other component and allow you to step through the logic.
 2. There are a few big picture takeaways that should be immediately apparent from the above organization
@@ -47,7 +35,12 @@ So....
 * Vue diagram is program down by components on the top and Vuex (state management) on the bottom
 * Phoenix is organized by MVC pattern and a link to AWS.
 3. Remember this diagram is here as an aid to understanding. If it is not useful, do not use it!
-
+##Deployment Spec
+![Screenshot](/DeploymentDiagram.jpg?raw=true "Deployment Specs")
+1. The first step to run this project is to run the Phoenix backend.
+* First you build the dockerfile and send it to EC2 Container Service.
+* Next you send the dockerrun file to EB ALB through a deploy or create command (make sure create commands have a timeout >10 minutes, if the project takes longer than that to load). You can choose to send the Dockerfile and the Dockerrun to the EB ALB if you don't want to store it, but this is ill advised (make sure that the Dockerfile is formatted for this). Also, make sure you turn off NGINX! It's a php router (seemingly), that is very powerful (I'm told), but it doesn't play nice with phoenix in this build.
+2. Traffic is routed through my Digital Ocean DNS in the newsly.q8z8p.net CNAME, and then it goes to the EB ALB EC2 t2.micro instance, where the Docker image is now stored. In my phoenix code I called out RDS and S3 services. Since this code is now dockerized, the traffic coming from the frontend will hit the EC2 instance, see the docker route to those buckets and route back the information. Neat!
 
 # Useful Bash Commands
 ## For the Phoenix Backend
@@ -95,7 +88,7 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 # What's Left to Do / Next Steps
 1. Currently my picture S3 handling doesn't have an option to delete pictures, that needs to happen.
-2. Secure authentication is not yet implemented. This should definitely be done to protect user data
+2. Secure authentication is not yet implemented. This should definitely be done to protect user data.
 3. Some refactoring is definitely in order. Major planned revisions include:
 * Defmodules in Phoenix Application need to be renamed to be as intuitive as possible
 * Track scope of all sockets and see if some can be combined and others eliminated.

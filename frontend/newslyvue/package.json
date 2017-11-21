@@ -3,17 +3,20 @@
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "patientplatypus",
+  "homepage": "https://github.com/patientplatypus/newslyfrontenddeployment",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "npm run dev",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "deploy": "node ./node_modules/vue-gh-pages/index.js"
   },
   "dependencies": {
     "axios": "^0.17.0",
     "lodash": "^4.17.4",
     "phoenix": "^1.3.0",
     "vue": "^2.5.2",
+    "vue-gh-pages": "^1.6.4",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },

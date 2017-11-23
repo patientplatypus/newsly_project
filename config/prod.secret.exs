@@ -30,15 +30,15 @@ use Mix.Config
 #   pool_size: 20,
 #   ssl: true
 
-# config :ex_aws,
-#   access_key_id: {:system, "AWS_ACCESS_KEY_ID"}
-#   secret_access_key: {:system, "AWS_SECRET_ACCESS_KEY"},
-#   bucket_name: {:system, "BUCKET_NAME"},
-#   s3: [
-#    scheme: "https://",
-#    host: "phoenixprofilepicstoragebucket999.s3.amazonaws.com",
-#    region: "us-west-2"
-#   ]
+config :ex_aws,
+  access_key_id: {:system, "AWS_ACCESS_KEY_ID"}
+  secret_access_key: {:system, "AWS_SECRET_ACCESS_KEY"},
+  bucket_name: {:system, "BUCKET_NAME"},
+  s3: [
+   scheme: "https://",
+   host: "phoenixprofilepicstoragebucket999.s3.amazonaws.com",
+   region: "us-west-2"
+  ]
 
 config :newsly, Newsly.Repo,
   adapter: Ecto.Adapters.Postgres,

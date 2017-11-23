@@ -31,7 +31,7 @@ use Mix.Config
 #   ssl: true
 
 config :ex_aws,
-  access_key_id: {:system, "AWS_ACCESS_KEY_ID"}
+  access_key_id: {:system, "AWS_ACCESS_KEY_ID"},
   secret_access_key: {:system, "AWS_SECRET_ACCESS_KEY"},
   bucket_name: {:system, "BUCKET_NAME"},
   s3: [
